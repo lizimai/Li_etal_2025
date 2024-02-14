@@ -1,0 +1,17 @@
+# This R project includes data and code for project "Division of labour in colony defence in a clonal ant"
+
+data:
+- exp_raw: this folder contains all the raw data of colony defence
+- exp_processed: this folder stores processed intermediate data produced by scripts
+    - updatedAntTable_4before.csv: exploratory behaviour of individual ants from group size 4 during basedline activities
+    - updatedAntTable_8before.csv: exploratory behaviour of individual ants from group size 8 during basedline activities
+
+scripts:
+- 1_data_preprocessing.R: preprocess the raw data
+- 2_defence_score_and_behavioural_varation.R: calculate the defence score and statistical analysis on the effect of group size, presence and type of brood, trial on variation in defence behaviour
+- 3_behavioural_consistency.R: statistical analysis on correlation of defence score between different trials
+- 4_exploratory_defence_behaviour.R: correlation between exploratory and defence behahviour
+- 5_dol_efficiency.R: correlation between DOL and efficiency in colony defence
+- 6_sm_supplementary_materials.R: supplementary materials on correlation between defence score used in the study simple calculation of number of sting attempts normalised by the number of encounters, and statistical analysis performed using the normalised number of stinging attempts
+
+
