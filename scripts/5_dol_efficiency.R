@@ -10,7 +10,7 @@ library(ggfortify)
 library(ggExtra)
 library(ggh4x)
 
-load("data/exp_processed/individual_defence_score20240212.RData")
+load("data/exp_processed/individual_defence_score20240215.RData")
 
 # data preparation ----
 defence_efficiency_col <- defence_score_ind %>%
@@ -81,9 +81,4 @@ summary(lm_eff_dol_final)
 post_hoc_result <- emmeans(lm_eff_dol_final, pairwise ~ brood, adjust = "tukey")
 # Viewing the results
 print(post_hoc_result$contrasts)
-
-# Save data
-current_date <- format(Sys.Date(), "%Y%m%d")
-file_name <- paste0("data/exp_processed/eff_dol", current_date, ".RData")
-save(eff_dol, file = file_name)
 

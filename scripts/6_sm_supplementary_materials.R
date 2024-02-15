@@ -9,7 +9,7 @@ library(ggfortify)
 
 # load data
 # ! please load the most recently generated data from step 1 ! 
-load("data/exp_processed/processed_data_20240212.RData")
+load("data/exp_processed/processed_data_20240215.RData")
 
 # calculate the encounter rate for each individual (used to normalise defence later)
 encounters_ind <- data_formatted_cut %>%

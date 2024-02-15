@@ -9,9 +9,9 @@ library(ggfortify)
 library(ggExtra)
 
 # load data ----
-load("data/exp_processed/processed_data_20240212.RData")
-load("data/exp_processed/individual_defence_score20240212.RData")
-load("data/exp_processed/ranked_defence_score20240212.RData")
+load("data/exp_processed/processed_data_20240215.RData")
+load("data/exp_processed/individual_defence_score20240215.RData")
+load("data/exp_processed/ranked_defence_score20240215.RData")
 track4before <- read.csv("data/exp_processed/updatedAntTable_4before.csv")
 track8before <- read.csv("data/exp_processed/updatedAntTable_8Before.csv")
 track8before$antColour <- tolower(track8before$antColour)

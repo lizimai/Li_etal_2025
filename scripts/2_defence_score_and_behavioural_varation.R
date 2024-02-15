@@ -8,7 +8,7 @@ library(ggfortify)
 
 # load data ----
 # ! please load the most recently generated data from step 1 ! 
-load("data/exp_processed/processed_data_20240212.RData")
+load("data/exp_processed/processed_data_20240215.RData")
 
 # process data ----
 # calculate the total number of encounters for each ant during each trial
@@ -47,6 +47,8 @@ defence_score_ind <- left_join(data_formatted_cut, encounters_ind, by = c("group
             totalStingsDur_ind = sum(duration)) %>%
   ungroup() %>%
   left_join(complete_ant_list, ., by = join_by(colony, brood, group_size, color, trial)) %>% 
+  dplyr::select(-totalEncounters) %>% 
+  left_join(., encounters_ind, by = join_by(colony, brood, group_size, color, trial)) %>% 
   mutate(
     totalEncounters = ifelse(is.na(totalEncounters), 0, totalEncounters),
     totalStings_ind = ifelse(is.na(totalStings_ind), 0, totalStings_ind),
@@ -68,6 +70,8 @@ defence_score_ind_across_trials <- left_join(data_formatted_cut, encounters_ind_
             totalStingsDur_ind = sum(duration)) %>%
   ungroup() %>%
   left_join(complete_ant_list_across_trials, ., by = join_by(colony, brood, group_size, color)) %>% 
+  dplyr::select(-totalEncounters) %>% 
+  left_join(., encounters_ind_across_trials, by = join_by(colony, brood, group_size, color)) %>% 
   mutate(
     totalEncounters = ifelse(is.na(totalEncounters), 0, totalEncounters),
     totalStings_ind = ifelse(is.na(totalStings_ind), 0, totalStings_ind),
@@ -158,14 +162,18 @@ drop1(lmer_dol_final, test = "Chisq")
 summary(lmer_dol_final)
 
 # LMs for scores across trials
-lmer_dol <- lm(sd_defence_score ~ brood * group_size, data = sd_defence_score_ind_across_trials)
+lm_dol <- lm(sd_defence_score ~ brood * group_size, data = sd_defence_score_ind_across_trials)
 drop1(lmer_dol, test = "F") # interaction not significant
-lmer_dol <- lm(sd_defence_score ~ brood + group_size, data = sd_defence_score_ind_across_trials)
-drop1(lmer_dol, test = "F") # interaction not significant
-summary(lmer_dol)
-autoplot(lmer_dol)
+lm_dol <- lm(sd_defence_score ~ brood + group_size, data = sd_defence_score_ind_across_trials)
+drop1(lm_dol, test = "F") # interaction not significant
+summary(lm_dol)
+autoplot(lm_dol)
 
 # Save data
 current_date <- format(Sys.Date(), "%Y%m%d")
 file_name <- paste0("data/exp_processed/individual_defence_score", current_date, ".RData")
 save(defence_score_ind, sd_defence_score_ind, sd_defence_score_ind_across_trials, file = file_name)
+
+
+
+

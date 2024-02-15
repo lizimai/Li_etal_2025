@@ -6,7 +6,7 @@ library(emmeans)
 library(ggExtra)
 library(ggh4x)
 
-load(file = "data/exp_processed/individual_defence_score20240212.RData")
+load(file = "data/exp_processed/individual_defence_score20240215.RData")
 
 # data preparation ----
 # Rank the data within each colony and trial
@@ -98,7 +98,7 @@ reshaped_defence_1 %>%
   #facet_wrap(~ brood, ncol = 3) +
   xlab("Rank of individual defence score during trial 1") +
   ylab("Rank of individual defence score during trial 2") +
-  facet_grid2(col = vars(brood), scales = "free", independent = "y", axes = "all", strip = ridiculous_strips) +
+  facet_grid2(col = vars(brood), scales = "free", independent = "y", axes = "all") +
   theme_classic() +
   theme(legend.position = "none")
 ggsave("plots/bro_t1t2_corr.pdf", width = 10, height = 4)
@@ -113,7 +113,7 @@ reshaped_defence_2 %>%
   #facet_wrap(~ brood, ncol = 3) +
   xlab("Rank of individual defence score during trial 2") +
   ylab("Rank of individual defence score during trial 3") +
-  facet_grid2(col = vars(brood), scales = "free", independent = "y", axes = "all", strip = ridiculous_strips) +
+  facet_grid2(col = vars(brood), scales = "free", independent = "y", axes = "all") +
   theme_classic() +
   theme(legend.position = "none")
 ggsave("plots/bro_t2t3_corr.pdf", width = 10, height = 4)
