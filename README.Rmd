@@ -3,8 +3,8 @@
 data:
 - exp_raw: this folder contains all the raw data of colony defence
 - exp_processed: this folder stores processed intermediate data produced by scripts
-    - updatedAntTable_4before.csv: exploratory behaviour of individual ants from group size 4 during basedline activities
-    - updatedAntTable_8before.csv: exploratory behaviour of individual ants from group size 8 during basedline activities
+    - updatedAntTable_4before.csv: exploratory behaviour of individual ants from group size 4 during baseline activity
+    - updatedAntTable_8before.csv: exploratory behaviour of individual ants from group size 8 during baseline activity
 
 scripts:
 - 1_data_preprocessing.R: preprocess the raw data
